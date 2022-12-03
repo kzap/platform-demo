@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: core-services
   source:
-    path: nginx-ingress
+    path: gitops-repo/nginx-ingress
     repoURL: https://github.com/kzap/platform-demo.git
   syncPolicy:
     automated:

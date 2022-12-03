@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: core-services
   source:
-    path: argocd
+    path: gitops-repo/argocd
     repoURL: https://github.com/kzap/platform-demo.git
   syncPolicy:
     automated: {}
