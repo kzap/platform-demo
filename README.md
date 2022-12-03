@@ -22,8 +22,9 @@ It then allows you to create AWS resources using Crossplane such as an entire EK
     kind create cluster --config ./kind/platform-cluster.yaml
     ```
 
-- Install ArgoCD using `kustomize` so it can fetch all the other applications
+- Install ArgoCD using `kustomize` so it can fetch all the other applications (Run it twice because CRDs are not installed the first time)
 
     ```sh
-    kubectl apply -k ./argocd
+    kubectl --context kind-platform apply -k ./gitops-repo/argocd
+    kubectl --context kind-platform apply -k ./gitops-repo/argocd
     ```

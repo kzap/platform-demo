@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: argocd
 resources:
 - ns.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.1.6/manifests/core-install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.3/manifests/core-install.yaml
 - bootstrap-projects.yaml
 - bootstrap-applications.yaml
