@@ -3,10 +3,11 @@
 This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and installs ArgoCD and uses it to sync the following applications onto the cluster:
 
 - argocd
-- ingress-nginx
 - cert-manager
+- ingress-nginx
+- linkerd
+- emojivoto sample application
 
-It then allows you to create AWS resources using Crossplane such as an entire EKS cluster as shown below.
 
 ## Getting Started
 
