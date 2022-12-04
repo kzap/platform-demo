@@ -4,5 +4,6 @@ namespace: argocd
 resources:
 - ns.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.3/manifests/core-install.yaml
+- configmap-custom-healthcheck.yaml
 - bootstrap-projects.yaml
 - bootstrap-applications.yaml
