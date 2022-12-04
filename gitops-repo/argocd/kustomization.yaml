@@ -21,4 +21,6 @@ secretGenerator:
           "insecure": false
         }
       - name=in-cluster
-      - server=https://kubernetes.default.svc123
+      - server=https://kubernetes.default.svc
+generatorOptions:
+  disableNameSuffixHash: true
