@@ -2,8 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-- ns.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.3/manifests/core-install.yaml
-- configmap-custom-healthcheck.yaml
-- bootstrap-projects.yaml
-- bootstrap-applications.yaml
+  - ns.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.3/manifests/core-install.yaml
+  - bootstrap-projects.yaml
+  - bootstrap-applications.yaml
+patchesStrategicMerge:
+  - configmap-custom-healthcheck.yaml
