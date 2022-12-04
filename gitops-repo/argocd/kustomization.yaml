@@ -8,4 +8,17 @@ resources:
   - bootstrap-argocd.yaml
   - bootstrap-applications.yaml
 patchesStrategicMerge:
-  - configmap-custom-healthcheck.yaml
+  - patch-cm-custom-healthcheck.yaml
+  - patch-secret-incluster.yaml
+secretGenerator:
+  - name: argocd-cluster-in-cluster
+    literals:
+      - |-
+        config={
+        "bearerToken": "",
+        "tlsClientConfig": {
+          "caData": "",
+          "insecure": false
+        }
+      - name=in-cluster
+      - server=https://kubernetes.default.svc

@@ -1,19 +1,29 @@
+kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
-kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
   name: kratix-platform
   namespace: argocd
 spec:
-  destination:
-    namespace: kratix-platform-system
-    server: https://kubernetes.default.svc
-  project: core-services
-  source:
-    path: gitops-repo/kratix-platform
-    repoURL: https://github.com/kzap/platform-demo.git
-  syncPolicy:
-    automated: {}
-    syncOptions: # Sync options which modifies sync behavior
-    - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            kratix-type: platform
+  template:
+    metadata:
+      annotations:
+        argocd.argoproj.io/sync-wave: "-1"
+      name: kratix-platform
+      namespace: argocd
+    spec:
+      destination:
+        namespace: kratix-platform-system
+        server: https://kubernetes.default.svc
+      project: core-services
+      source:
+        path: gitops-repo/kratix-platform
+        repoURL: https://github.com/kzap/platform-demo.git
+      syncPolicy:
+        automated: {}
+        syncOptions: # Sync options which modifies sync behavior
+          - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
