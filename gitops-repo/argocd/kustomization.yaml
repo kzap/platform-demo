@@ -20,5 +20,5 @@ secretGenerator:
           "caData": "",
           "insecure": false
         }
-      - name=test-in-cluster
-      - server=https://kubernetes.default.svc
+      - name=in-cluster
+      - server=https://kubernetes.default.svc123
