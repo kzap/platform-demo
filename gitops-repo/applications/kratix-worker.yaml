@@ -3,15 +3,15 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  name: kratix-workers
+  name: kratix-worker
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
+    namespace: kratix-worker-system
     server: https://kubernetes.default.svc
   project: core-services
   source:
-    path: gitops-repo/kratix-workers
+    path: gitops-repo/kratix-worker
     repoURL: https://github.com/kzap/platform-demo.git
   syncPolicy:
     automated: {}
