@@ -8,8 +8,6 @@ spec:
   - clusters: {}
   template:
     metadata:
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
       name: ingress-nginx
       namespace: argocd
     spec:
