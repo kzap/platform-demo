@@ -19,7 +19,7 @@ spec:
           cluster-type: platform
   template:
     metadata:
-      name: argocd
+      name: "argocd-{{values.cluster-type}}"
       namespace: argocd
     spec:
       destination:
