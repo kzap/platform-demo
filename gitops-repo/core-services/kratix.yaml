@@ -11,12 +11,12 @@ spec:
             cluster-type: platform
         values:
           cluster-type: platform
-    - clusters:
-        selector:
-          matchLabels:
-            cluster-type: worker
-        values:
-          cluster-type: worker
+#    - clusters:
+#        selector:
+#          matchLabels:
+#            cluster-type: worker
+#        values:
+#          cluster-type: worker
   template:
     metadata:
       name: "kratix-{{values.cluster-type}}"
