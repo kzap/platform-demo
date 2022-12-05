@@ -1,0 +1,35 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+        values:
+          cluster-type: platform
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+        values:
+          cluster-type: platform
+  template:
+    metadata:
+      name: argocd
+      namespace: argocd
+    spec:
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: core-services
+      source:
+        path: "gitops-repo/argocd/{{values.cluster-type}}"
+        repoURL: https://github.com/kzap/platform-demo.git
+      syncPolicy:
+        automated: {}
+        syncOptions: # Sync options which modifies sync behavior
+        - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.

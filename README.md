@@ -26,6 +26,6 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 - Install ArgoCD using `kustomize` so it can fetch all the other applications (Run it twice because CRDs are not installed the first time)
 
     ```sh
-    kubectl --context kind-platform apply -k ./gitops-repo/argocd
-    kubectl --context kind-platform apply -k ./gitops-repo/argocd
+    kubectl --context kind-platform apply -k ./gitops-repo/argocd/platform
+    kubectl --context kind-platform apply -k ./gitops-repo/argocd/platform
     ```

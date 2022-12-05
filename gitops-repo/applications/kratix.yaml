@@ -1,27 +1,35 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kratix-worker
+  name: kratix
   namespace: argocd
 spec:
   generators:
     - clusters:
         selector:
           matchLabels:
-            kratix-type: worker
+            cluster-type: platform
+        values:
+          cluster-type: platform
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: worker
+        values:
+          cluster-type: worker
   template:
     metadata:
       annotations:
         argocd.argoproj.io/sync-wave: "-1"
-      name: kratix-worker
+      name: "kratix-{{values.cluster-type}}"
       namespace: argocd
     spec:
       destination:
-        namespace: kratix-worker-system
+        namespace: "kratix-{{values.cluster-type}}-system"
         server: https://kubernetes.default.svc
       project: core-services
       source:
-        path: gitops-repo/kratix-worker
+        path: "gitops-repo/kratix-{{values.cluster-type}}"
         repoURL: https://github.com/kzap/platform-demo.git
       syncPolicy:
         automated: {}
