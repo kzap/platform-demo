@@ -19,8 +19,6 @@ spec:
           cluster-type: worker
   template:
     metadata:
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
       name: "kratix-{{values.cluster-type}}"
       namespace: argocd
     spec:

@@ -14,9 +14,9 @@ spec:
     - clusters:
         selector:
           matchLabels:
-            cluster-type: platform
+            cluster-type: worker
         values:
-          cluster-type: platform
+          cluster-type: worker
   syncPolicy:
     preserveResourcesOnDeletion: true
   template:

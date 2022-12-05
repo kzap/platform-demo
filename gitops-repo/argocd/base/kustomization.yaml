@@ -6,7 +6,7 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.3/manifests/core-install.yaml
   - bootstrap-projects.yaml
   - bootstrap-argocd.yaml
-  - bootstrap-applications.yaml
+  - bootstrap-core-services.yaml
 patchesStrategicMerge:
   - patch-cm-custom-healthcheck.yaml
   - patch-secret-incluster.yaml
