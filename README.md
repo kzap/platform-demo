@@ -17,10 +17,11 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
     brew install kind
     ```
 
-- Create the KinD cluster from the config:
+- Create the KinD clusters from the config:
 
     ```sh
-    kind create cluster --config ./kind/platform-cluster.yaml
+    kind create cluster --config ./kind/cluster-platform.yaml
+    kind create cluster --config ./kind/cluster-worker.yaml
     ```
 
 - Install ArgoCD using `kustomize` so it can fetch all the other applications (Run it twice because CRDs are not installed the first time)
@@ -28,4 +29,6 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
     ```sh
     kubectl --context kind-platform apply -k ./gitops-repo/argocd/platform
     kubectl --context kind-platform apply -k ./gitops-repo/argocd/platform
+    kubectl --context kind-worker apply -k ./gitops-repo/argocd/worker
+    kubectl --context kind-worker apply -k ./gitops-repo/argocd/worker
     ```
