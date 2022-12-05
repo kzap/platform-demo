@@ -17,6 +17,8 @@ spec:
             cluster-type: platform
         values:
           cluster-type: platform
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: "argocd-{{values.cluster-type}}"
