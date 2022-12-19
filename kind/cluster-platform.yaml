@@ -7,7 +7,7 @@ name: platform
 #    endpoint = ["http://kind-registry:5000"]
 nodes:
 - role: control-plane
-  image: kindest/node:v1.21.14
+  image: kindest/node:v1.22.15
   kubeadmConfigPatches:
   - |
     kind: InitConfiguration
@@ -20,4 +20,7 @@ nodes:
     protocol: TCP
   - containerPort: 443
     hostPort: 8443
+    protocol: TCP
+  - containerPort: 3000
+    hostPort: 8333
     protocol: TCP

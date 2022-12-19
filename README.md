@@ -6,6 +6,10 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 - cert-manager
 - ingress-nginx
 - linkerd
+- kratix-platform
+  - minio
+  - gitea
+- kratix worker examples
 - emojivoto sample application
 
 

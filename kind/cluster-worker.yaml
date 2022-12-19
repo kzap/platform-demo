@@ -7,7 +7,7 @@ name: worker
 #    endpoint = ["http://kind-registry:5000"]
 nodes:
 - role: control-plane
-  image: kindest/node:v1.21.14
+  image: kindest/node:v1.22.15
   kubeadmConfigPatches:
   - |
     kind: InitConfiguration
