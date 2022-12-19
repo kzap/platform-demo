@@ -13,3 +13,5 @@ spec:
             - --metrics-bind-address=127.0.0.1:8080
             - --leader-elect
             - --repository-type=git
+# `--repository-type=git` makes Kratix use the GitBucketWriter which requires Gitea to be running in the cluster and accessible using specific credentials
+# Ref: https://github.com/syntasso/kratix/blob/main/lib/writers/git.go#L40-L50
