@@ -36,3 +36,7 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
     kubectl --context kind-worker apply -k ./gitops-repo/argocd/worker
     kubectl --context kind-worker apply -k ./gitops-repo/argocd/worker
     ```
+
+- You can observe the Kratix Platform commiting to the local Git Server by opening the URL: https://0.0.0.0:8333/
+    
+    > Login with the credentials here: https://github.com/syntasso/kratix/blob/e40901e658772057c0c4d6526cbe58cd8951e91a/lib/writers/git.go#L43-L44
