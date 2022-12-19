@@ -39,4 +39,4 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 
 - You can observe the Kratix Platform commiting to the local Git Server by opening the URL: https://0.0.0.0:8333/
     
-    > Login with the credentials here: https://github.com/syntasso/kratix/blob/e40901e658772057c0c4d6526cbe58cd8951e91a/lib/writers/git.go#L43-L44
+    > Login with the credentials here: https://github.com/syntasso/kratix/blob/e40901e658772057c0c4d6526cbe58cd8951e91a/hack/platform/gitea-install.yaml#L846-L849

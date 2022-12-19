@@ -1,9 +1,9 @@
+# Gitea is used as a destination data store for the Kratix Platform to write its worker resources to
+# Ref: https://github.com/syntasso/kratix/blob/e40901e658772057c0c4d6526cbe58cd8951e91a/lib/writers/git.go#L38-L53
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: gitea
 resources:
   - https://raw.githubusercontent.com/syntasso/kratix/main/hack/platform/gitea-install.yaml
-# `--repository-type=git` makes Kratix use the GitBucketWriter which requires Gitea to be running in the cluster and accessible using specific credentials
-# Ref: https://github.com/syntasso/kratix/blob/main/lib/writers/git.go#L40-L50
 patchesStrategicMerge:
   - patch-secret-gitea-inline-config.yaml
