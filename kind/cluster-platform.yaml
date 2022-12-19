@@ -15,12 +15,14 @@ nodes:
       kubeletExtraArgs:
         node-labels: "ingress-ready=true"
   extraPortMappings:
+  # ingress nginx is exposing hostPort 80 and 443
   - containerPort: 80
     hostPort: 8080
     protocol: TCP
   - containerPort: 443
     hostPort: 8443
     protocol: TCP
-  - containerPort: 3000
+  # gitea service is exposing nodePort 31333
+  - containerPort: 31333
     hostPort: 8333
     protocol: TCP
