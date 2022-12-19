@@ -15,7 +15,7 @@ spec:
       namespace: argocd
     spec:
       destination:
-        namespace: kratix-platform-system
+        namespace: gitea
         server: https://kubernetes.default.svc
       project: core-services
       source:

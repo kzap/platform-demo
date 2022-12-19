@@ -1,5 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: kratix-platform-system
+namespace: gitea
 resources:
   - https://raw.githubusercontent.com/syntasso/kratix/main/hack/platform/gitea-install.yaml
