@@ -4,7 +4,7 @@ metadata:
   name: argocd-tls-certs-cm
 data:
   # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
-  172.18.255.200: |
+  172.18.0.2: |
     -----BEGIN CERTIFICATE-----
     MIIDczCCAlugAwIBAgIQRWIhuDNxiuif0qo61EEefDANBgkqhkiG9w0BAQsFADAi
     MRAwDgYDVQQKEwdBY21lIENvMQ4wDAYDVQQDEwVHaXRlYTAeFw0yMjEyMDgxNzE1

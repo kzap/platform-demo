@@ -13,4 +13,4 @@ spec:
     app.kubernetes.io/name: gitea
   type: LoadBalancer
   # must be an IP configured in metallb: kubectl --context kind-platform -n metallb-system get ipaddresspool
-  loadBalancerIP: 172.18.255.200
+  loadBalancerIP: 172.18.0.2

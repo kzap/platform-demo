@@ -9,7 +9,7 @@ secretGenerator:
   - name: kratix-platform-git-creds
     literals:
       - type=git
-      - url=https://172.18.255.200/gitea_admin
+      - url=https://172.18.0.2/gitea_admin
       - username=gitea_admin
       - 'password=r8sA8CPHD9!bt6d'
 generatorOptions:
