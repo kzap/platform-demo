@@ -5,5 +5,6 @@ kind: Kustomization
 namespace: gitea
 resources:
   - https://raw.githubusercontent.com/syntasso/kratix/main/hack/platform/gitea-install.yaml
+  - service-lb.yaml
 patchesStrategicMerge:
   - patch-secret-gitea-inline-config.yaml
