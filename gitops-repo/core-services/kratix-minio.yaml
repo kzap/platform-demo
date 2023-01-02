@@ -9,6 +9,8 @@ spec:
         selector:
           matchLabels:
             cluster-type: platform
+            # adding this tag that doesnt exist in ArgoCD servers so we wont deploy this
+            disabled: "true"
   template:
     metadata:
       name: kratix-minio

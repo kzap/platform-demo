@@ -23,7 +23,7 @@ spec:
       project: core-services
       source:
         path: ./
-        repoURL: https://172.18.0.2:31333/gitea_admin/{{values.cluster-name}}-kratix-resources
+        repoURL: https://0.0.0.0:8333/gitea_admin/{{values.cluster-name}}-kratix-resources
       syncPolicy:
         automated: {}
         syncOptions: # Sync options which modifies sync behavior
