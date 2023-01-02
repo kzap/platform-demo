@@ -2,13 +2,13 @@
 
 This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and installs ArgoCD and uses it to sync the following applications onto the cluster:
 
-- argocd
-- cert-manager
-- ingress-nginx
-- linkerd
+- argocd - deployment tool
+- cert-manager - certificates
+- ingress-nginx - ingress reverse proxy
+- linkerd - service mesh
 - kratix-platform
-  - minio
   - gitea
+    - metallb - for exposing git server to 
 - kratix worker examples
 - emojivoto sample application
 
@@ -28,7 +28,7 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
     kind create cluster --config ./kind/cluster-worker.yaml
     ```
 
-- Install ArgoCD using `kustomize` so it can fetch all the other applications (Run it twice because CRDs are not installed the first time)
+- Install ArgoCD using `kustomize` so it can fetch all the other applications (Run it twice because CRDs are installed the first time)
 
     ```sh
     kubectl --context kind-platform apply -k ./gitops-repo/argocd/platform
