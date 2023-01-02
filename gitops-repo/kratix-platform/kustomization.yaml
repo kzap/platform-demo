@@ -2,8 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kratix-platform-system
 resources:
-  - https://raw.githubusercontent.com/syntasso/kratix/e40901e658772057c0c4d6526cbe58cd8951e91a/distribution/kratix.yaml
-  - cluster-workers.yaml
-  - https://raw.githubusercontent.com/syntasso/kratix/e40901e658772057c0c4d6526cbe58cd8951e91a/samples/jenkins/jenkins-promise.yaml
+  - https://raw.githubusercontent.com/syntasso/kratix/main/distribution/kratix.yaml
 patchesStrategicMerge:
   - patch-deployment-controller-manager.yaml
