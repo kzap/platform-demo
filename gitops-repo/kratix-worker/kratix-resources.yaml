@@ -23,7 +23,7 @@ spec:
       project: core-services
       source:
         path: ./
-        # get the Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
+        # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
         repoURL: https://172.18.255.200/gitea_admin/{{values.cluster-name}}-kratix-resources
       syncPolicy:
         automated: {}

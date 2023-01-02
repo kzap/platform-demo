@@ -5,10 +5,11 @@ patchesStrategicMerge:
   - patch-secret-repo-creds.yaml
   - patch-configmap-tls.yaml
 secretGenerator:
+  # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
   - name: kratix-platform-git-creds
     literals:
       - type=git
-      - url=https://0.0.0.0:8333/gitea_admin
+      - url=https://172.18.255.200/gitea_admin
       - username=gitea_admin
       - 'password=r8sA8CPHD9!bt6d'
 generatorOptions:
