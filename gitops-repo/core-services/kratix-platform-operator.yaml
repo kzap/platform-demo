@@ -1,0 +1,27 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: kratix-platform-operator
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+  template:
+    metadata:
+      name: kratix-platform-operator
+      namespace: argocd
+    spec:
+      destination:
+        namespace: kratix-platform-system
+        server: https://kubernetes.default.svc
+      project: core-services
+      source:
+        path: gitops-repo/kratix-platform-operator
+        repoURL: https://github.com/kzap/platform-demo.git
+      syncPolicy:
+        automated: {}
+        syncOptions: # Sync options which modifies sync behavior
+          - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
