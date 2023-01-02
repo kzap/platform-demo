@@ -4,6 +4,6 @@ namespace: kratix-platform-system
 resources:
   - https://raw.githubusercontent.com/syntasso/kratix/main/distribution/kratix.yaml
   - cluster-workers.yaml
-  #- https://raw.githubusercontent.com/syntasso/kratix/main/samples/jenkins/jenkins-promise.yaml
+  - https://raw.githubusercontent.com/syntasso/kratix/main/samples/jenkins/jenkins-promise.yaml
 patchesStrategicMerge:
   - patch-deployment-controller-manager.yaml
