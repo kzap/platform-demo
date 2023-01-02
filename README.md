@@ -12,6 +12,9 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 - kratix worker examples
 - emojivoto sample application
 
+The goal is to have a Platform and a Worker Kubernetes cluster running and the source of truth being this GitHub repository. Kratix will be used as a platform to deploy custom resources onto the worker cluster.
+
+> This is based on the [Kratix Quickstart](https://kratix.io/docs/workshop/installing-kratix) tutorial.
 
 ## Getting Started
 
@@ -40,3 +43,5 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 - You can observe the Kratix Platform commiting to the local Git Server by opening the URL: https://0.0.0.0:8333/
     
     > Login with the credentials here: https://github.com/syntasso/kratix/blob/e40901e658772057c0c4d6526cbe58cd8951e91a/hack/platform/gitea-install.yaml#L846-L849
+
+    - 
