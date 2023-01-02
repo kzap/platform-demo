@@ -1,0 +1,28 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: metallb
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+  template:
+    metadata:
+      name: metallb
+      namespace: metallb
+    spec:
+      destination:
+        namespace: metallb-system
+        server: https://kubernetes.default.svc
+      project: core-services
+      source:
+        path: gitops-repo/metallb
+        repoURL: https://github.com/kzap/platform-demo.git
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions: # Sync options which modifies sync behavior
+        - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
