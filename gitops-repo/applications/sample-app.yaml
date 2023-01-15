@@ -1,0 +1,24 @@
+kind: ApplicationSet
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: sample-app
+  namespace: argocd
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: sample-app
+      namespace: argocd
+    spec:
+      destination:
+        namespace: sample-app
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: gitops-repo/sample-app
+        repoURL: https://github.com/kzap/platform-demo.git
+      syncPolicy:
+        automated: {}
+        syncOptions: # Sync options which modifies sync behavior
+        - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.

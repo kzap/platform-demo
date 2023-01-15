@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - cluster-workers.yaml
   - https://raw.githubusercontent.com/syntasso/kratix/main/samples/jenkins/jenkins-promise.yaml
-  - jenkins-request.yaml
