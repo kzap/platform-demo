@@ -1,30 +1,26 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kratix-worker-resources
+  name: kratix-platform-bootstrap
   namespace: argocd
 spec:
   generators:
     - clusters:
         selector:
           matchLabels:
-            cluster-type: worker
-            cluster-name: worker-cluster-1
-        values:
-          cluster-name: worker-cluster-1
+            cluster-type: platform
   template:
     metadata:
-      name: kratix-worker-resources
+      name: kratix-platform-bootstrap
       namespace: argocd
     spec:
       destination:
-        namespace: argocd
+        namespace: kratix-platform-system
         server: https://kubernetes.default.svc
       project: core-services
       source:
-        path: ./
-        # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
-        repoURL: https://172.18.0.2/gitea_admin/{{values.cluster-name}}-kratix-resources
+        path: "gitops-repo/kratix-platform-bootstrap"
+        repoURL: https://github.com/kzap/platform-demo.git
       syncPolicy:
         automated: {}
         syncOptions: # Sync options which modifies sync behavior

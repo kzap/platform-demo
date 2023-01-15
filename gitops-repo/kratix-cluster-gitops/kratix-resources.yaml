@@ -1,7 +1,7 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kratix-worker
+  name: kratix-cluster-resources
   namespace: argocd
 spec:
   generators:
@@ -9,18 +9,28 @@ spec:
         selector:
           matchLabels:
             cluster-type: worker
+            cluster-name: worker-cluster-1
+        values:
+          cluster-name: worker-cluster-1
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+        values:
+          cluster-name: platform-cluster-1
   template:
     metadata:
-      name: kratix-worker
+      name: kratix-{{values.cluster-name}}-resources
       namespace: argocd
     spec:
       destination:
-        namespace: kratix-worker-system
+        namespace: argocd
         server: https://kubernetes.default.svc
       project: core-services
       source:
-        path: "gitops-repo/kratix-worker"
-        repoURL: https://github.com/kzap/platform-demo.git
+        path: ./
+        # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
+        repoURL: https://172.18.0.2/gitea_admin/{{values.cluster-name}}-kratix-resources
       syncPolicy:
         automated: {}
         syncOptions: # Sync options which modifies sync behavior

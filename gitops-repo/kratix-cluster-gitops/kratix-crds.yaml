@@ -1,7 +1,7 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kratix-worker-crds
+  name: kratix-cluster-crds
   namespace: argocd
 spec:
   generators:
@@ -11,9 +11,15 @@ spec:
             cluster-type: worker
         values:
           cluster-name: worker-cluster-1
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: platform
+        values:
+          cluster-name: platform-cluster-1
   template:
     metadata:
-      name: kratix-worker-crds
+      name: kratix-{{values.cluster-name}}-crds
       namespace: argocd
     spec:
       destination:

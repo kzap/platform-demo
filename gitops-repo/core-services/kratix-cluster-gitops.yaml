@@ -1,25 +1,21 @@
 kind: ApplicationSet
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: kratix-platform-resources
+  name: kratix-cluster-gitops
   namespace: argocd
 spec:
-  generators:
-    - clusters:
-        selector:
-          matchLabels:
-            cluster-type: platform
+  generators: []
   template:
     metadata:
-      name: kratix-platform-resources
+      name: kratix-cluster-gitops
       namespace: argocd
     spec:
       destination:
-        namespace: kratix-platform-system
+        namespace: argocd
         server: https://kubernetes.default.svc
       project: core-services
       source:
-        path: "gitops-repo/kratix-platform-resources"
+        path: "gitops-repo/kratix-cluster-gitops"
         repoURL: https://github.com/kzap/platform-demo.git
       syncPolicy:
         automated: {}
