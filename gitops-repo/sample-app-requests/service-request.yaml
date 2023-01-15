@@ -1,5 +1,5 @@
 ---
-apiVersion: services.platform.ada.support/v1
+apiVersion: platform.ada.support/v1
 kind: service
 metadata:
   name: andre-test-service
