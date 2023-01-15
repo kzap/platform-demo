@@ -5,7 +5,10 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - clusters: {}
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: worker
   template:
     metadata:
       name: sample-app
@@ -21,4 +24,4 @@ spec:
       syncPolicy:
         automated: {}
         syncOptions: # Sync options which modifies sync behavior
-        - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+          - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
