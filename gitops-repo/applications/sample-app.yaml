@@ -15,7 +15,7 @@ spec:
       namespace: argocd
     spec:
       destination:
-        namespace: sample-app-requests
+        namespace: default
         server: https://kubernetes.default.svc
       project: default
       source:
