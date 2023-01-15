@@ -9,7 +9,6 @@ spec:
         selector:
           matchLabels:
             cluster-type: worker
-            cluster-name: worker-cluster-1
         values:
           cluster-name: worker-cluster-1
     - clusters:
