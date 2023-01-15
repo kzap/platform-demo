@@ -1,0 +1,8 @@
+---
+apiVersion: services.platform.ada.support/v1
+kind: service
+metadata:
+  name: andre-test-service
+spec:
+  name: andre-service-name-override
+  template: python
