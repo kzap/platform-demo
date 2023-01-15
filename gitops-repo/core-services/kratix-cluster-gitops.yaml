@@ -4,7 +4,8 @@ metadata:
   name: kratix-cluster-gitops
   namespace: argocd
 spec:
-  generators: []
+  generators:
+    - clusters: {}
   template:
     metadata:
       name: kratix-cluster-gitops
