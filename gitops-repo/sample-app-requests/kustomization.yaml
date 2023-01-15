@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: default
 resources:
   - jenkins-request.yaml
+  - service-request.yaml
