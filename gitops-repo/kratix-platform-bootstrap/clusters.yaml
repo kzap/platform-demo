@@ -2,21 +2,21 @@
 apiVersion: platform.kratix.io/v1alpha1
 kind: Cluster
 metadata:
-  name: worker-cluster-1
+  name: worker-cluster
   namespace: default
   labels:
     environment: dev
 spec:
-  id: worker-cluster-1-id
-  bucketPath: worker-cluster-1
+  id: worker-cluster-id
+  bucketPath: worker-cluster
 ---
 apiVersion: platform.kratix.io/v1alpha1
 kind: Cluster
 metadata:
-  name: platform-cluster-1
+  name: platform-cluster
   namespace: default
   labels:
     environment: platform
 spec:
-  id: platform-cluster-1-id
-  bucketPath: platform-cluster-1
+  id: platform-cluster-id
+  bucketPath: platform-cluster

@@ -10,13 +10,13 @@ spec:
           matchLabels:
             cluster-type: worker
         values:
-          cluster-name: worker-cluster-1
+          cluster-name: worker-cluster
     - clusters:
         selector:
           matchLabels:
             cluster-type: platform
         values:
-          cluster-name: platform-cluster-1
+          cluster-name: platform-cluster
   template:
     metadata:
       name: kratix-{{values.cluster-name}}-resources
