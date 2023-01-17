@@ -40,5 +40,7 @@ spec:
             type: object
         served: true
         storage: true
-  xaasRequestPipeline: []
-status: {}
+  xaasRequestPipeline:
+    - ghcr.io/kzap/platform-demo/service-request-pipeline:v0
+  clusterSelector:
+    environment: dev

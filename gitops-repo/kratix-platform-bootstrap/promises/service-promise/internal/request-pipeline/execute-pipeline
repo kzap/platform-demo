@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -x
+
+# Read current values from the provided resource request
+export name="$(yq eval '.spec.name' /input/object.yaml)"
+export platform="$(yq eval '.spec.platform' /input/object.yaml)"
+
+cat /tmp/transfer/slack-resource-request.yaml \
+  | yq eval '.metadata.name = env(name) | .spec.message = "Deploying app: " + env(name)' \
+  > /output/slack-resource-request.yaml
