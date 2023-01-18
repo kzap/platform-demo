@@ -5,3 +5,4 @@ resources:
   - jenkins-request.yaml
   - service-request.yaml
   - github-repo-resource-request.yaml
+  - hackdays-demo-app.yaml
