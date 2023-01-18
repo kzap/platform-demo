@@ -22,6 +22,6 @@ spec:
         path: gitops-repo/emojivoto
         repoURL: https://github.com/kzap/platform-demo.git
       syncPolicy:
-        automated: {}
+        #automated: {}
         syncOptions: # Sync options which modifies sync behavior
           - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
