@@ -4,8 +4,6 @@ metadata:
   name: service
   namespace: default
 spec:
-  clusterSelector:
-    environment: platform
   workerClusterResources: []
   xaasCrd:
     apiVersion: apiextensions.k8s.io/v1
@@ -43,4 +41,4 @@ spec:
   xaasRequestPipeline:
     - ghcr.io/kzap/platform-demo/service-request-pipeline:v0
   clusterSelector:
-    environment: dev
+    environment: platform
