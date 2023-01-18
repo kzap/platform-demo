@@ -31,6 +31,7 @@ spec:
         # should match Git Server IP from `kubectl --context kind-platform -n gitea get service gitea-http-lb`
         repoURL: https://172.18.0.2/gitea_admin/{{values.cluster-name}}-kratix-crds
       syncPolicy:
-        automated: {}
+        automated:
+          prune: true
         syncOptions: # Sync options which modifies sync behavior
           - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
