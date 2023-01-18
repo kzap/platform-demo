@@ -23,7 +23,7 @@ spec:
         metadata:
           name: appsets.argocd.platform.ada.support
         spec:
-          group: argocd.ada.support
+          group: argocd.platform.ada.support
           names:
             kind: appset
             plural: appsets
