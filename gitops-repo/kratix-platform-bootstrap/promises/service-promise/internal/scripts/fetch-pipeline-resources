@@ -5,6 +5,7 @@ PWD="$( cd $(dirname $0)/.. && pwd)"
 mkdir -p $PWD/request-pipeline/resources
 
 urls=(
+    "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/namespace/resource-request.yaml"
     "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/slack/resource-request.yaml"
 )
 

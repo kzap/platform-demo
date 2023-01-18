@@ -3,13 +3,24 @@
 PWD="$( cd $(dirname $0)/.. && pwd)"
 
 
-urls=(
+platform_resource_urls=(
     "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/slack/promise.yaml"
 )
 
 mkdir -p ${PWD}/resources
 
-for url in "${urls[@]}"; do
+for url in "${platform_resource_urls[@]}"; do
     promise_name=$(basename $(dirname $url))
     curl -sL $url | yq eval '(select(.kind == "Promise") | .spec.clusterSelector) = { "environment": "platform" }' > $PWD/resources/${promise_name}-$(basename $url)
+done
+
+worker_resource_urls=(
+    "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/namespace/promise.yaml"
+)
+
+mkdir -p ${PWD}/resources
+
+for url in "${worker_resource_urls[@]}"; do
+    promise_name=$(basename $(dirname $url))
+    curl -sL $url | yq eval '(select(.kind == "Promise") | .spec.clusterSelector) = { "environment": "dev" }' > $PWD/resources/${promise_name}-$(basename $url)
 done

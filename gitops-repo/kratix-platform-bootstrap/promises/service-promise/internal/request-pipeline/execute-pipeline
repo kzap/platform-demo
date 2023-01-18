@@ -7,5 +7,9 @@ export name="$(yq eval '.spec.name' /input/object.yaml)"
 export platform="$(yq eval '.spec.platform' /input/object.yaml)"
 
 cat /tmp/transfer/slack-resource-request.yaml \
-  | yq eval '.metadata.name = env(name) | .spec.message = "Deploying app: " + env(name)' \
+  | yq eval '.metadata.name = env(name) | .spec.message = "Deploying app: " + env(name) + " with the [" + env(platform) + "] template' \
   > /output/slack-resource-request.yaml
+
+cat /tmp/transfer/namespace-resource-request.yaml \
+  | yq eval '.metadata.name = env(name) | .spec.namespaceName = env(name)' \
+  > /output/namespace-resource-request.yaml
