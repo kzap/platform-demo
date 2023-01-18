@@ -1,0 +1,8 @@
+---
+apiVersion: argocd.platform.ada.support/v1
+kind: appset
+metadata:
+  name: test-service
+  namespace: default
+spec:
+  name: service-name-override

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+set -x
+
+# Read current values from the provided resource request
+export name="$(yq eval '.spec.name' /input/object.yaml)"
+
+cat /tmp/transfer/argocd-appset.yaml \
+  | yq eval '.metadata.name = env(name) | .spec.template.metadata.name = env(name) | .spec.template.spec.destination.namespace = env(name)' \
+  > /output/argocd-appset.yaml

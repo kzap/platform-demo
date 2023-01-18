@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+PWD="$( cd $(dirname $0)/.. && pwd)"
+
+mkdir -p $PWD/request-pipeline/resources
+
+urls=()
+
+for url in "${urls[@]}"; do
+    promise_name=$(basename $(dirname $url))
+    curl -sL -o $PWD/request-pipeline/resources/${promise_name}-$(basename $url) $url
+done
