@@ -4,12 +4,16 @@ set -x
 
 # Read current values from the provided resource request
 export name="$(yq eval '.spec.name' /input/object.yaml)"
-export platform="$(yq eval '.spec.platform' /input/object.yaml)"
+export template="$(yq eval '.spec.template' /input/object.yaml)"
 
 cat /tmp/transfer/slack-resource-request.yaml \
-  | yq eval '.metadata.name = env(name) | .spec.message = "Deploying app: " + env(name) + " with the [" + env(platform) + "] template' \
+  | yq eval '.metadata.name = env(name) | .spec.message = "Deploying service: _" + env(name) + "_ with the *[" + env(template) + "]* template"' \
   > /output/slack-resource-request.yaml
 
 cat /tmp/transfer/namespace-resource-request.yaml \
   | yq eval '.metadata.name = env(name) | .spec.namespaceName = env(name)' \
   > /output/namespace-resource-request.yaml
+
+cat /tmp/transfer/argocd-appset-promise-resource-request.yaml \
+  | yq eval '.metadata.name = env(name) | .spec.name = env(name)' \
+  > /output/argocd-appset.yaml

@@ -7,6 +7,7 @@ mkdir -p $PWD/request-pipeline/resources
 urls=(
     "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/namespace/resource-request.yaml"
     "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/slack/resource-request.yaml"
+    "https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/argocd-appset-promise/resource-request.yaml"
 )
 
 for url in "${urls[@]}"; do

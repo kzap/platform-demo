@@ -3,6 +3,7 @@
 This Promise provides an Ada Service. This is a compound Promise that installs the following Promises:
 
 - [Slack](https://github.com/syntasso/kratix-marketplace/tree/main/slack)
+- [Namespace](https://github.com/syntasso/kratix-marketplace/tree/main/namespace)
 
 The following fields are configurable:
 
@@ -12,14 +13,24 @@ The following fields are configurable:
 To install:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/syntasso/kratix/main/samples/app-as-a-service-demo/promise.yaml
+kubectl create -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/service-promise/promise.yaml
 ```
 
 Make sure you install the Slack hook on the platform before making the resource request.
 
 > (via the [Slack Promise](https://github.com/syntasso/kratix-marketplace/tree/main/slack) in the Marketplace) This promise uses a Slack hook to send messages to a channel. To provide access to this hook, create a secret in default namespace called slack-channel-hook with a .data.url field containing the hook. You can create it using the following command on the platform cluster (ensure you have SLACK_HOOK_URL env var exported):
 
+-  Create a Slack Webhook following this guide: https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack
+
+- Store the Slack Webhook in an environment variable:
+
+```sh
+SLACK_HOOK_URL=https://hooks.slack.com/services/
 ```
+
+- Create the Kubernetes secret where this webhook will be stored:
+
+```sh
 kubectl --namespace default create secret generic \
   slack-channel-hook --from-literal=url=${SLACK_HOOK_URL}
 ```
@@ -27,7 +38,7 @@ kubectl --namespace default create secret generic \
 To make a resource request:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/app-promise/resource-request.yaml
+kubectl apply -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/service-promise/resource-request.yaml
 ```
 <!--
 This resource request deploys the Kratix [sample Golang app](https://github.com/syntasso/sample-golang-app).

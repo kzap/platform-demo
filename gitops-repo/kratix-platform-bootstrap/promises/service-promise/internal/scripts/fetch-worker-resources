@@ -16,6 +16,7 @@ done
 
 worker_resource_urls=(
     "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/namespace/promise.yaml"
+    "https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/argocd-appset-promise/promise.yaml"
 )
 
 mkdir -p ${PWD}/resources
