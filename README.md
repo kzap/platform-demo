@@ -31,7 +31,6 @@ The goal is to have a Platform and a Worker Kubernetes cluster running and the s
 
     ```sh
     kind create cluster --config ./kind/cluster-platform.yaml
-    ./kind/start-kind-registry.sh
     kind create cluster --config ./kind/cluster-worker.yaml
     ```
 
