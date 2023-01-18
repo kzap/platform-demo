@@ -3,14 +3,16 @@
 set -x
 
 # Read current values from the provided resource request
+export name="$(yq eval '.metadata.name' /input/object.yaml)"
 export repo_name="$(yq eval '.spec.repoName' /input/object.yaml)"
 export org_name="$(yq eval '.spec.orgName' /input/object.yaml)"
 export template_repo="$(yq eval '.spec.templateRepo' /input/object.yaml)"
+export timestamp="$(date +%s)"
 
 echo "repo_name=${repo_name}"
 echo "org_name=${org_name}"
 echo "template_repo=${template_repo}"
 
 cat /tmp/transfer/slack-resource-request.yaml \
-  | yq eval '.metadata.name = env(name) | .spec.message = "Creating GitHub Repo at **https://github.com/" + env(org_name) + "/" + env(repo_name) + "** based on the Template Repo _" + env(template_repo) + "_"' \
+  | yq eval '.metadata.name = env(name) + "-" + env(timestamp) | .spec.message = "Creating GitHub Repo at *[https://github.com/" + env(org_name) + "/" + env(repo_name) + "]* based on the Template Repo _" + env(template_repo) + "_"' \
   > /output/slack-resource-request.yaml
