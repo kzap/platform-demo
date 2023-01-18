@@ -3,7 +3,9 @@
 PWD="$( cd $(dirname $0)/.. && pwd)"
 
 
-platform_resource_urls=()
+platform_resource_urls=(
+    "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/slack/promise.yaml"
+)
 
 mkdir -p ${PWD}/resources
 

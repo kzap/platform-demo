@@ -4,7 +4,9 @@ PWD="$( cd $(dirname $0)/.. && pwd)"
 
 mkdir -p $PWD/request-pipeline/resources
 
-urls=()
+urls=(
+    "https://raw.githubusercontent.com/syntasso/kratix-marketplace/main/slack/resource-request.yaml"
+)
 
 for url in "${urls[@]}"; do
     promise_name=$(basename $(dirname $url))

@@ -10,3 +10,7 @@ export template_repo="$(yq eval '.spec.templateRepo' /input/object.yaml)"
 echo "repo_name=${repo_name}"
 echo "org_name=${org_name}"
 echo "template_repo=${template_repo}"
+
+cat /tmp/transfer/slack-resource-request.yaml \
+  | yq eval '.metadata.name = env(name) | .spec.message = "Creating GitHub Repo at **https://github.com/" + env(org_name) + "/" + env(repo_name) + "** based on the Template Repo _" + env(template_repo) + "_"' \
+  > /output/slack-resource-request.yaml
