@@ -2,16 +2,16 @@
 apiVersion: platform.ada.support/v1
 kind: service
 metadata:
-  name: andre-test-service
+  name: hackdays-test-service-andre-python
 spec:
-  name: andre-service-name-override
+  name: hackdays-test-service-andre-python
   template: python
 
 ---
 apiVersion: platform.ada.support/v1
 kind: service
 metadata:
-  name: andre-test-service2
+  name: hackdays-test-service-andre-golang
 spec:
-  name: andre-test-service2
+  name: hackdays-test-service-andre-golang
   template: golang
