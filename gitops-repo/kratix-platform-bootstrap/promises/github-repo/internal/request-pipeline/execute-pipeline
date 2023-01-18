@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -x
+#set -x
 
 # Read current values from the provided resource request
 export name="$(yq eval '.metadata.name' /input/object.yaml)"
