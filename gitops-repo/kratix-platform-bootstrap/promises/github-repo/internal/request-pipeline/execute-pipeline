@@ -13,6 +13,14 @@ echo "repo_name=${repo_name}"
 echo "org_name=${org_name}"
 echo "template_repo=${template_repo}"
 
+export GH_TOKEN="$(kubectl get secret github-repo-promise -o=jsonpath='{.data.github_token}' | base64 -d)"
+
+gh auth setup-git
+gh repo create "${org_name}/${repo_name}" \
+  --clone \
+  --private \
+  --template "${template_repo}"
+
 cat /tmp/transfer/slack-resource-request.yaml \
   | yq eval '.metadata.name = env(name) + "-" + env(timestamp) | .spec.message = "Creating GitHub Repo at *[https://github.com/" + env(org_name) + "/" + env(repo_name) + "]* based on the Template Repo _" + env(template_repo) + "_"' \
   > /output/slack-resource-request.yaml

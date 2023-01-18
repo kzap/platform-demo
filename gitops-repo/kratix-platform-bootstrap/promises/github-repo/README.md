@@ -3,17 +3,34 @@
 This Promise provides an Ada Service. This is a compound Promise that installs the following Promises:
 
 - [Slack](https://github.com/syntasso/kratix-marketplace/tree/main/slack)
-- [Namespace](https://github.com/syntasso/kratix-marketplace/tree/main/namespace)
 
 The following fields are configurable:
 
-- name: service name, if left empty will use the object name
-- template: The Service Template to use. Defaults to "python"
+- repoName: Repository Name
+- orgName: The GitHub Org where this will be created
+- templateName: The GitHub repo template to clone
 
 To install:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/service-promise/promise.yaml
+kubectl create -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/github-repo-promise/promise.yaml
+```
+
+Make sure you install the GitHub Access Token on the platform before making the resource request.
+
+-  Create a GitHub Access Token following this guide: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+- Store the GitHub Access Token in an environment variable:
+
+```sh
+GITHUB_TOKEN=ghp_
+```
+
+- Create the Kubernetes secret where this webhook will be stored:
+
+```sh
+kubectl --namespace default create secret generic \
+  github-repo-promise --from-literal=github_token=${GITHUB_TOKEN}
 ```
 
 Make sure you install the Slack hook on the platform before making the resource request.
@@ -38,7 +55,7 @@ kubectl --namespace default create secret generic \
 To make a resource request:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/service-promise/resource-request.yaml
+kubectl apply -f https://raw.githubusercontent.com/kzap/platform-demo/main/gitops-repo/kratix-platform-bootstrap/promises/github-repo-promise/resource-request.yaml
 ```
 <!--
 This resource request deploys the Kratix [sample Golang app](https://github.com/syntasso/sample-golang-app).
