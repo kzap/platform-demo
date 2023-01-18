@@ -1,0 +1,9 @@
+---
+apiVersion: github.platform.ada.support/v1
+kind: repo
+metadata:
+  name: test-github-repo
+spec:
+  repoName: new-repo-name
+  orgName: your-github-org
+  templateRepo: your-github-org/template-repo-name
