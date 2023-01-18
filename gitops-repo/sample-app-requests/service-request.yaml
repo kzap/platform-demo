@@ -15,3 +15,13 @@ metadata:
 spec:
   name: hackdays-test-service-andre-golang
   template: golang
+
+---
+apiVersion: platform.ada.support/v1
+kind: service
+metadata:
+  name: hackdays-test-service-raj-golang
+spec:
+  name: hackdays-test-service-raj-golang
+  template: golang
+  
