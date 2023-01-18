@@ -6,3 +6,12 @@ metadata:
 spec:
   name: andre-service-name-override
   template: python
+
+---
+apiVersion: platform.ada.support/v1
+kind: service
+metadata:
+  name: andre-test-service2
+spec:
+  name: andre-test-service2
+  template: golang
