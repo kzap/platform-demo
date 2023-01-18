@@ -1,0 +1,9 @@
+---
+apiVersion: github.platform.ada.support/v1
+kind: repo
+metadata:
+  name: test-git-repo
+spec:
+  repoName: hackdays-test-service
+  orgName: AdaSupport
+  templateRepo: AdaSupport/ada-service-template

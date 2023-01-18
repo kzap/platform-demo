@@ -4,3 +4,4 @@ namespace: default
 resources:
   - jenkins-request.yaml
   - service-request.yaml
+  - github-repo-resource-request.yaml

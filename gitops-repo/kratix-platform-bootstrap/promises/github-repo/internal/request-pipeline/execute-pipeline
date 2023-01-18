@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set -x
+
+# Read current values from the provided resource request
+export repo_name="$(yq eval '.spec.repoName' /input/object.yaml)"
+export org_name="$(yq eval '.spec.orgName' /input/object.yaml)"
+export template_repo="$(yq eval '.spec.templateRepo' /input/object.yaml)"
+
+echo "repo_name=${repo_name}"
+echo "org_name=${org_name}"
+echo "template_repo=${template_repo}"

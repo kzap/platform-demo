@@ -1,0 +1,27 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: github-repo-default-promise-pipeline-credentials
+rules:
+  - apiGroups:
+      - ""
+    resourceNames:
+      - github-repo-promise
+    resources:
+      - secrets
+    verbs:
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: github-repo-default-promise-pipeline-credentials
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: github-repo-default-promise-pipeline-credentials
+subjects:
+  - kind: ServiceAccount
+    name: github-repo-default-promise-pipeline
+    namespace: default
