@@ -13,6 +13,12 @@ while [ $# -gt 0 ]; do
         --platform linux/amd64 \
         "${PWD}/request-pipeline" ;;
 
+    build-arm64)
+      docker build \
+        --tag "${pipeline_image}" \
+        --platform linux/arm64 \
+        "${PWD}/request-pipeline" ;;
+
     load)
       kind load docker-image "${pipeline_image}" --name platform ;;
 
