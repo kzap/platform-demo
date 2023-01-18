@@ -14,6 +14,6 @@ cat /tmp/transfer/namespace-resource-request.yaml \
   | yq eval '.metadata.name = env(name) | .spec.namespaceName = env(name)' \
   > /output/namespace-resource-request.yaml
 
-cat /tmp/transfer/argocd-appset-promise-resource-request.yaml \
+cat /tmp/transfer/argocd-appset-resource-request.yaml \
   | yq eval '.metadata.name = env(name) | .spec.name = env(name)' \
   > /output/argocd-appset.yaml
